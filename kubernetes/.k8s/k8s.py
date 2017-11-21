@@ -40,9 +40,9 @@ def config(setting):
     filename = setting.get('filename')
     config_map = setting.get('config_map')
     file = path + '/' + filename
-    backup_file = '.backup/' + file
-    system('mkdir -p .backup/%s' % path)
-    system('cp %s .backup/%s' % (file, path))
+    backup_file = '/vagrant/.k8s/.backup/' + file
+    system('mkdir -p /vagrant/.k8s/.backup/%s' % path)
+    system('cp %s /vagrant/.k8s/.backup/%s' % (file, path))
     with open(backup_file) as fin, open(file, 'w') as conf:
         for ln in fin:
             match_key = set()
