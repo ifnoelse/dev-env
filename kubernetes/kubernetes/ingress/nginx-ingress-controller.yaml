@@ -50,7 +50,9 @@ spec:
             valueFrom:
               fieldRef:
                 fieldPath: metadata.namespace
+          - name: KUBERNETES_MASTER
+            value: http://192.168.100.101:8080
         args:
         - /nginx-ingress-controller
         - --default-backend-service=$(POD_NAMESPACE)/default-http-backend
-        - --apiserver-host=http://192.168.100.100:8080
+        - --apiserver-host=http://192.168.100.101:8080
