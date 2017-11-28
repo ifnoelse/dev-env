@@ -1,4 +1,4 @@
-vm_num = 4
+vm_num = 3
 
 Vagrant.configure("2") do |config|
 

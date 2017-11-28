@@ -22,7 +22,7 @@ config_setting = {'path': '/etc/kubernetes', 'filename': 'config',
 kubelet_setting = {'path': '/etc/kubernetes', 'filename': 'kubelet',
                    'config_map': {'KUBELET_ADDRESS': '"--address=0.0.0.0"',
                                   'KUBELET_HOSTNAME': '"%s"' % hostname,
-                                  'KUBELET_ARGS':'--cluster-dns=168.168.0.100 --cluster-domain=cluster.local. --allow-privileged=true',
+                                  'KUBELET_ARGS': '--cluster-dns=168.168.0.100 --cluster-domain=cluster.local. --allow-privileged=true',
                                   'KUBELET_API_SERVER': '"--api-servers=http://%s:8080"' % master_hostname}}
 
 flanneld_setting = {'path': '/etc/sysconfig', 'filename': 'flanneld',
@@ -40,9 +40,9 @@ def config(setting):
     filename = setting.get('filename')
     config_map = setting.get('config_map')
     file = path + '/' + filename
-    backup_file = '/vagrant/.k8s/.backup/' + file
-    system('mkdir -p /vagrant/.k8s/.backup/%s' % path)
-    system('cp %s /vagrant/.k8s/.backup/%s' % (file, path))
+    backup_file = '/vagrant/.k8s/.backup/' + hostname + '/' + file
+    system('mkdir -p /vagrant/.k8s/.backup/%s/%s' % (hostname, path))
+    system('cp %s /vagrant/.k8s/.backup/%s/%s' % (file, hostname, path))
     with open(backup_file) as fin, open(file, 'w') as conf:
         for ln in fin:
             match_key = set()
