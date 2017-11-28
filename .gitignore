@@ -3,3 +3,4 @@
 .idea/
 dev-env.iml
 kubernetes/.vagrant/
+centos/.vagrant/
