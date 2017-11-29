@@ -5,4 +5,4 @@ kubernetes/.vagrant/
 centos/.vagrant/
 kubernetes/.k8s/.backup/
 nginx/.vagrant/
-nginx/resources/log/nginx/*
+nginx/resources/log/nginx/
