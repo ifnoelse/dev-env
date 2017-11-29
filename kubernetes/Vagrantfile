@@ -1,5 +1,5 @@
 vm_num = 3
-vm_node_name = "node"
+vm_node_name = "k8s"
 
 Vagrant.configure("2") do |config|
 

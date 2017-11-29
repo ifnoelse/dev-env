@@ -1,5 +1,5 @@
 vm_num = 1
-vm_node_name = "node"
+vm_node_name = "centos"
 
 Vagrant.configure("2") do |config|
 
