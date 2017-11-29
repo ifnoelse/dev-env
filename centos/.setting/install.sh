@@ -1,5 +1,5 @@
 install_basic_util=true
-install_nginx=true
+install_nginx=false
 install_docker=false
 install_python3=false
 

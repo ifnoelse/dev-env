@@ -4,3 +4,5 @@
 dev-env.iml
 kubernetes/.vagrant/
 centos/.vagrant/
+kubernetes/.k8s/.backup/
+nginx/.vagrant/
