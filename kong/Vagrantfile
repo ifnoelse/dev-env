@@ -43,9 +43,6 @@ Vagrant.configure("2") do |config|
 
         # 添加本地hosts解析
         for i in {1..#{vm_num}};do echo "#{vm_ip_prefix}${i}	#{vm_name_prefix}${i}">>/etc/hosts;done
-
-        # 修改nginx配置文件路径，便于开发测试
-        echo "include /vagrant/resources/nginx/*.nginx;" > /etc/nginx/nginx.conf
       SHELL
       # node.ssh.private_key_path = ".setting/private_key"
       # node.ssh.username = "ifnoelse"

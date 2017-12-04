@@ -12,6 +12,7 @@ spec:
       labels:
         k8s-app: nginx-ingress-controller
       annotations:
+        nginx.ingress.kubernetes.io/ssl-redirect: "false"
         prometheus.io/port: '10254'
         prometheus.io/scrape: 'true'
     spec:
