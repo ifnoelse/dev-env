@@ -25,11 +25,8 @@ Vagrant.configure("2") do |config|
       end
 
       node.vm.provision "shell", inline: <<-SHELL
-        # 配合国内yum源
-        yum install -y wget
-        mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.backup
-        wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.163.com/.help/CentOS7-Base-163.repo
-        yum makecache
+        # 设置基本配置
+        /vagrant/.setting/install.sh
 
         # 安装基本组件
         /vagrant/.setting/install.sh
@@ -40,28 +37,11 @@ Vagrant.configure("2") do |config|
         # 设置用户ssh key登陆
         /vagrant/.setting/ssh_auth.sh ifnoelse
 
-        # 修改时区
-        ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
-
         # 修改hostname
         echo "#{vm_name}">/etc/hostname
 
         # 添加本地hosts解析
         for i in {1..#{vm_num}};do echo "192.168.100.10${i}	#{vm_name_prefix}-0${i}">>/etc/hosts;done
-
-        # 关闭防火墙
-        systemctl stop firewalld
-        systemctl disable firewalld
-
-        # 关闭selinux
-        setenforce 0
-        sed -i 's/SELINUX=permissive/SELINUX=disabled/g' /etc/selinux/config
-
-        # 禁用IPv6
-        sysctl -w net.ipv6.conf.all.disable_ipv6=1
-        sysctl -w net.ipv6.conf.default.disable_ipv6=1
-        echo "net.ipv6.conf.all.disable_ipv6 =1">>/etc/sysctl.conf
-        echo "net.ipv6.conf.default.disable_ipv6 =1">>/etc/sysctl.conf
       SHELL
       # node.ssh.private_key_path = ".setting/private_key"
       # node.ssh.username = "ifnoelse"
