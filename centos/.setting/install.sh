@@ -32,6 +32,7 @@ enabled=1'> /etc/yum.repos.d/nginx.repo
 [ "$install_python3" = "true" ] && {
     yum -y install zlib*
     yum -y install openssl
+    yum -y install openssl-devel
     wget https://www.python.org/ftp/python/3.6.3/Python-3.6.3.tgz
     mv Python-3.6.3.tgz /usr/local/src/
     cd /usr/local/src/
