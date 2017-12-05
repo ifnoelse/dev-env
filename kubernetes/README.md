@@ -1,3 +1,4 @@
+# 使用说明
 1、修改Vagrantfile中vm_num变量的数据值，改变量决定了集群中的节点数
 ``` bash
 vm_num = 3
@@ -14,4 +15,25 @@ vagrant up
 ``` bash
 vagrant ssh node-01
 kubectl get node
+```
+# 组件安装
+1、安装dashbord
+``` bash
+cd /vagrant kubernetes
+kubectl create -f dashboard/
+```
+2、安装dns
+``` bash
+cd /vagrant kubernetes
+kubectl create -f dns/
+```
+3、安装heapster
+``` bash
+cd /vagrant kubernetes
+kubectl create -f heapster/
+```
+4、安装 nginx-ingress-controller.yaml
+``` bash
+cd /vagrant kubernetes/ingress
+kubectl create -f nginx-ingress-controller.yaml
 ```
