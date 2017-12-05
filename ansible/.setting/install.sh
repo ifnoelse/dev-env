@@ -1,15 +1,18 @@
-install_basic_util=true
-install_nginx=false
-install_docker=false
-install_python3=false
+function install {
+    install_basic_util
+    # install_nginx
+    # install_docker
+    # install_python3
+    # install_ansible
+}
 
-[ "$install_basic_util" = "true" ] && {
+function install_basic_util {
     yum clean all
     yum install -y gcc
     yum install -y vim wget net-tools
 }
 
-[ "$install_nginx" = "true" ] && {
+function install_nginx {
     echo '[nginx]
 name=nginx repo
 baseurl=http://nginx.org/packages/centos/7/$basearch/
@@ -19,7 +22,7 @@ enabled=1'> /etc/yum.repos.d/nginx.repo
     nginx
 }
 
-[ "$install_docker" = "true" ] && {
+function install_docker {
     yum install -y docker
     groupadd docker
     usermod -aG docker ifnoelse
@@ -29,7 +32,7 @@ enabled=1'> /etc/yum.repos.d/nginx.repo
     systemctl restart docker
 }
 
-[ "$install_python3" = "true" ] && {
+function install_python3 {
     yum -y install zlib*
     yum -y install openssl
     yum -y install openssl-devel
@@ -43,4 +46,10 @@ enabled=1'> /etc/yum.repos.d/nginx.repo
     make install
     ln -s /usr/local/python3/bin/python3 /usr/bin/python3
     ln -s /usr/local/python3/bin/pip3 /usr/bin/pip3
+}
+
+function install_ansible {
+    install_python3
+    pip3 install ansible
+    ln -s /usr/local/python3/bin/ansible  /usr/bin/ansible
 }
