@@ -2,7 +2,7 @@ function install {
     install_basic_util
     # install_nginx
     # install_docker
-    # install_python3
+    install_python3
     # install_ansible
 }
 
