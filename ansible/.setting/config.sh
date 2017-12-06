@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 # 配合国内yum源
 yum install -y wget
 mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.backup

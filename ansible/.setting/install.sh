@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 function install {
     install_basic_util
     # install_nginx
@@ -53,3 +54,5 @@ function install_ansible {
     pip3 install ansible
     ln -s /usr/local/python3/bin/ansible  /usr/bin/ansible
 }
+
+install
