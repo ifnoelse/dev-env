@@ -3,7 +3,7 @@ function install {
     install_basic_util
     # install_nginx
     # install_docker
-    install_python3
+    # install_python3
     # install_ansible
 }
 
@@ -52,7 +52,7 @@ function install_python3 {
 function install_ansible {
     install_python3
     pip3 install ansible
-    ln -s /usr/local/python3/bin/ansible  /usr/bin/ansible
+    for i in `ls /usr/local/python3/bin/|grep ansible`;do ln -s "/usr/local/python3/bin/$i" "/usr/bin/$i";done
 }
 
 install
