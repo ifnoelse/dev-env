@@ -29,7 +29,7 @@ kubectl create -f dns/
 ```
 3、安装heapster
 ``` bash
-cd /vagrant kubernetes
+cd /vagrant kubernetes 
 kubectl create -f heapster/
 ```
 4、安装 nginx-ingress-controller.yaml
