@@ -11,7 +11,7 @@ node.vm.box = "bento/centos-7.4"
 ``` bash
 vagrant up
 ```
-4、等待集群启动完成之后登陆node-01节点，通过以下命令检查kubernetes集群几点是否正常，如果集群正常可以看到集群中的从节点
+4、等待集群启动完成之后登陆node-01节点，通过以下命令检查kubernetes集群节点是否正常，如果集群正常可以看到集群中的从节点
 ``` bash
 vagrant ssh node-01
 kubectl get node
