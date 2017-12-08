@@ -1,0 +1,30 @@
+- hosts: all
+  tasks:
+  - name: Enable nginx repo
+    become: true
+    template:
+      src: nginx.repo.j2
+      dest: /etc/yum.repos.d/nginx.repo
+      owner: root
+      group: root
+      mode: 0644
+
+  - name: Ensure nginx is installed
+    become: true
+    yum:
+      name: nginx
+      state: present
+#    register: result
+  - name: check nginx
+    become: true
+    shell: rpm -qa|grep nginx
+    register: result
+  - name: show msg
+    debug: msg="result is {{result.stdout_lines|length}}}"
+    when: result.stdout_lines|length > 2
+#    notify:
+#       - restart nginx
+#  handlers:
+#  - name: restart nginx
+#    become: true
+#    service: name=nginx state=restarted

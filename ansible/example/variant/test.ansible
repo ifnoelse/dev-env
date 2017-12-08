@@ -1,0 +1,9 @@
+- hosts: all
+#  gather_facts: False
+  tasks:
+  - name: get hostname
+    shell: hostname
+    register: info
+  - name: display variable
+    debug: msg="{{inventory_hostname}} key={{info['stdout']}}} {{ansible_enp0s8.ipv4.address}}}"
+
