@@ -14,7 +14,7 @@
     yum:
       name: nginx
       state: present
-#    register: result
+#   register: result
   - name: check nginx
     become: true
     shell: rpm -qa|grep nginx
