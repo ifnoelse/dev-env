@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 function install {
     install_basic_util
     # install_nginx
@@ -9,7 +10,7 @@ function install {
 function install_basic_util {
     yum clean all
     yum install -y gcc
-    yum install -y vim wget net-tools
+    yum install -y vim
 }
 
 function install_nginx {
