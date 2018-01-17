@@ -1,5 +1,12 @@
+#!/usr/bin/env bash
+#升级内核
+#rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org
+#rpm -Uvh http://www.elrepo.org/elrepo-release-7.0-3.el7.elrepo.noarch.rpm
+#yum --enablerepo=elrepo-kernel install -y kernel-ml
+#grub2-set-default 0
+
 # 配合国内yum源
-yum install -y wget
+# yum install -y wget
 mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.backup
 wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.163.com/.help/CentOS7-Base-163.repo
 yum makecache
