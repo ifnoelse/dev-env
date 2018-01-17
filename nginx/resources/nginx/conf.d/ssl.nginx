@@ -3,15 +3,14 @@ server {
     server_name ifnoelse.com;
 
     ssl on;
-    ssl_certificate /vagrant/resources/cert/server/server.crt;
-    ssl_certificate_key /vagrant/resources/cert/server/server.key;
-    ssl_client_certificate /vagrant/resources/cert/ca/ca.crt;
+    ssl_certificate /vagrant/resources/cert/server.crt;
+    ssl_certificate_key /vagrant/resources/cert/server.key;
+    ssl_client_certificate /vagrant/resources/cert/ca.crt;
     ssl_verify_client on;
 
     location / {
         root   /vagrant/resources/html;
         index  index.html index.htm;
-        proxy_pass http://tomcat;
     }
 
     location /tomcat {
